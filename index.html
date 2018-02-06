@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="https://cdn.botframework.com/botframework-webchat/latest/botchat.css" rel="stylesheet" />
+   <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Bot Ipanema</title>
+
+  
+    <link href="botchat.css" rel="stylesheet" />
+	<link href="botchat-fullwindow.css" rel="stylesheet" />
   </head>
   <body>
     <div id="bot"/>
-    <script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
+    <script src="botchat.js"></script>
     <script>
       BotChat.App({
+		resize: 'window',
+        sendTyping: true,
+		
         directLine: { secret: findGetParameter("s") },
         user: { id: findGetParameter("userid"), name: findGetParameter("username")},
         bot: { id: 'BotEmDia' },
