@@ -16,8 +16,8 @@
       BotChat.App({
 		resize: 'window',
         sendTyping: true,
-		
-        directLine: { secret: findGetParameter("s") },
+			// recebe o secret no parametro
+        directLine: { secret: findGetSecret("s") },
         user: { id: findGetParameter("userid"), name: findGetParameter("username")},
         bot: { id: 'BotEmDia' },
         resize: 'detect'
@@ -25,6 +25,15 @@
 	  
 		function findGetParameter(parameterName) {
 		var result = null, tmp = [];
+		location.search.substr(1).split("&").forEach(function (item) {
+			tmp = item.split("=");
+			if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+			});
+		return result;
+		}
+		
+		function findGetSecret(parameterName) {
+		var result = "fqSgUB37NmU.cwA.Tq8.W1aM_1ijPC8Zvorgr3FN5-yHLTiAsp6do9EEAYkvu_A", tmp = [];
 		location.search.substr(1).split("&").forEach(function (item) {
 			tmp = item.split("=");
 			if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
